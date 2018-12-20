@@ -175,4 +175,12 @@ public class UserServiceimol implements IUserService{
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(user);
     }
+
+    //后台 是否为admin
+    public ServerResponse checkAdminRole(User user){
+        if (user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN){
+            return ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError();
+    }
 }
